@@ -1,5 +1,5 @@
 {
-  "name": "selectNormal",
+  "name": "pandaUIMobile",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "dev": "node build/dev-server.js"
   },
   "keywords": [],
-  "author": "yilianyoumeng <1329395802@qq.com>",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "node-sass": "^4.5.2",
@@ -29,7 +29,7 @@
     "chalk": "^1.1.3",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.11",
+    "css-loader": "^0.28.0",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0",
