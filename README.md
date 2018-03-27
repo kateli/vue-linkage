@@ -1,21 +1,13 @@
-you may have problem with sass-node,please try vpn if you are in china.
-
-Build Setup
+vue搭建的手机端滑动省市联动组件，可自定义叠加。css用rem为单位，配合<a href="https://github.com/amfe/lib-flexible">flexible</a>使用更佳
 
 ```
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
+- `build` - dev server 目录，包括webpack等
+- `package.json` - npm 依赖列表
+- `src` - vue前端页面及静态资源
+- `index.html` - vue入口文件
 ```
-### props
+安装及运行
 ```
-  @param value {String} current select value or init value
-  @param data {Array} loop array value
-  @param type {String} 'cycle' ,default 'line'
+npm install --安装依赖
+npm run dev --在localhost:8080端口运行
 ```
