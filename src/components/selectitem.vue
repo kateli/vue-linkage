@@ -15,7 +15,6 @@
 </template>
 <script>
   var rem=parseFloat((document.getElementsByTagName('html')[0].style.fontSize).replace('px',''));
-  console.log(rem);
   export default{
     name: 'pdSelectItem',
     data () {
@@ -56,7 +55,6 @@
     },
     watch:{
         toBegin:function(val){
-          console.log('this.toBegin   @@@@'+this.listName+'####'+val)
           if(this.listName=='areaName'){
             
             if(val==true){
@@ -144,8 +142,6 @@
         event.preventDefault()
       },
       itemTouchEnd (event) {
-        console.log(event);
-        console.log('####3');
         let finger = event.changedTouches[0]
         this.finger.lastY = finger.pageY
         this.finger.lastTime = event.timestamp || Date.now()
@@ -169,8 +165,6 @@
         } else {
           this.setStyle(move, 'end')
         }
-
-        console.log('this.toBegin  城市回到定点'+this.toBegin);
         //传值给父组件
         //this.$emit('valueChange', id);
       },
@@ -178,7 +172,6 @@
       setStyle (move, type, time) {
         // 34 => 68
         const singleHeight = (68/75*rem).toFixed(2);
-        console.log('singleHeight  '+singleHeight);
         const deg = 20
         const singleDeg = deg / singleHeight
         let currentListMove = this.finger.transformY
@@ -199,13 +192,11 @@
         let endMove = margin
         let endDeg = Math.round(updateDeg / deg) * deg
         if (type === 'end') {
-          console.log('测试城市回到上面')
           this.setListTransform(endMove, margin, type, time)
           this.setWheelDeg(endDeg, type, time)
           /* 设置$emit 延迟 */
           setTimeout(() => this.getPickValue(endMove), 100)
         } else {
-          console.log('测试城市回到上面type!=end')
           this.setListTransform(updateMove, margin)
           this.setWheelDeg(updateDeg)
         }
@@ -226,8 +217,6 @@
         // 34 => 68
         let index =Math.round(Math.abs(move / (68/75*rem).toFixed(2)));
         let pickValue = this.getSpinData(index);
-        console.log(index);
-        console.log('pickValue  '+pickValue);
         if(this.listName=='provinceName'){
           this.$emit('input', pickValue.provinceName)
           this.$emit('changeVal', [pickValue.id,index])

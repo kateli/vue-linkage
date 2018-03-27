@@ -1,4 +1,7 @@
 <template>
+<div>
+  <div class="word">选中的省份：{{province}}</div>
+  <div class="word">选中的城市：{{city}}</div>
   <div class="mask" v-if="areaShow">
       <select-box style="position: fixed;bottom: 0;width: 100%">
         <div class="tit">
@@ -10,62 +13,56 @@
         </div>
       </select-box>
   </div>
+</div>
+  
 </template>
 <script>
   import selectBox from './selectBox.vue'
   import selectItem from './selectItem.vue'
+  import areaData from '../json.json'
   export default{
     name: 'pdIosSelect',
     data () {
       return {
-        cityList:Array.from({length: 12}, (value, index) => 1 + index),
-        provinceList:[{areaName}],
+        provinceList:areaData.data,
+        cityList:areaData.data[0].areaInfoVOList,
         province:'1',
         city:'',
         toBegin:false,//城市初始化
-        areaShow:true
+        areaShow:true,
+        areaData:areaData
       }
     },
     components: {
       selectBox,selectItem
     },
-    created(){
-      this.test();
-    },
     methods:{
       changeValFn:function(data){
 				var that=this;
 				that.toBegin=true;
-				console.log('省份测试:');
-				console.log(data);
-				// that.provinceCode=data[0];
-				//var i=data[1];
-				// that.cityList=that.allAddressList[i].areaInfoVOList;
-				// that.cityCode=that.cityList[0].code;
-				// that.city=that.cityList[0].areaName;
-				
+				that.provinceCode=data[0];
+				var i=data[1];
+				that.cityList=that.provinceList[i].areaInfoVOList;
+				that.cityCode=that.cityList[0].code;
+				that.city=that.cityList[0].areaName;
 			},
 			changeValFn2:function(data){
 				var that=this;
 				that.toBegin=false;
-				console.log('城市测试:');
-				console.log(data);
-				// that.cityCode=data[0];
+				that.cityCode=data[0];
 				
       },
       //关闭弹出层
 			closeArea:function(){
 				this.areaShow=false;
-			},
-      test:function(){
-        console.log(this.cityList);
-        console.log(this.provinceList);
-      }
+			}
     }
   }
 </script>
 <style lang="less" scoped>
-@import '../assets.less';
-
+*{box-sizing: border-box;}
+.word{
+  font-size: 0.4rem;
+}
 </style>
 

@@ -25,5 +25,6 @@
   .pd-select-box .tit .close{
     color:#007aff;
     line-height: 1rem;
+    font-size: 0.4rem;
   }
 </style>
